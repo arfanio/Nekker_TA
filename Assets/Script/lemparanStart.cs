@@ -7,21 +7,13 @@ public class lemparanStart : MonoBehaviour
     public GameObject kelereng;
     public GameObject playerCamera;
 
-    public float jarakKelereng = 2f;
+    public float jarakKelereng = 1f;
     public float tembakBola = 5f;
 
     private bool pegangKelereng = true;
-    [Range(1, 5)]
-    [SerializeField] private int _maxIterations = 3;
-    [SerializeField] private float _maxDistance = 10f;
- 
-    private int _count;
-    private LineRenderer _line;
-    // Start is called before the first frame update
     void Start()
     {
         kelereng.GetComponent<Rigidbody> ().useGravity = false;
-        _line = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
