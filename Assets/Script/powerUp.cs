@@ -13,8 +13,10 @@ public class powerUp : MonoBehaviour
 
     private bool isPowerUp = false;
     private bool isDirectionUp = true;
-    private float amtPower = 0.0f;
+    public float amtPower = 0.0f;
     private float powerSpeed = 100.0f;
+
+    public float powerGauge;
     // Update is called once per frame
     void Update()
     {
@@ -58,6 +60,13 @@ public class powerUp : MonoBehaviour
     public void EndPowerUp()
     {
         isPowerUp = false;
+        // powerGauge = amtPower;
         textPowerAmt.text = amtPower.ToString("F0");
+        // Debug.Log(amtPower);
     }
+
+    // public void powerGaugeClass()
+    // {
+        
+    // }
 }

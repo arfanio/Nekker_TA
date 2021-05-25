@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class controllPoint : MonoBehaviour
+public class controllPoint : powerUp
 {
     [SerializeField]
     private Button shootButton;
-    [SerializeField]
-    private TMP_Text textPowerAmt;
+    // [SerializeField]
+    // private Text textPowerAmt;
+    // public float nilaiGauge = 0.0f;
+    public powerUp powerUp;
 
     float xRot, yRot = 0f;
 
@@ -21,7 +23,7 @@ public class controllPoint : MonoBehaviour
 
     public LineRenderer guideline;
 
-    void Update()
+void Update ()
     {
         transform.position = ball.position;
         if (Input.GetMouseButton(0))
@@ -37,8 +39,25 @@ public class controllPoint : MonoBehaviour
             guideline.SetPosition(0, transform.position);
             guideline.SetPosition(1, transform.position + transform.forward * 4f);
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            guideline.gameObject.SetActive(false);
+        }
+    }
 
+    public void shoot()
+        {
+            pressShoot ();
+            // nilaiGauge = amtPower;
+            // int.TryParse(powerGauge, out nilaiGauge);
+            Debug.Log(amtPower);
+        }
 
+    
+    
+
+    void pressShoot()
+    {
         if (Input.GetMouseButtonUp(0))
         {
             // shootPower =textPowerAmt;
@@ -47,4 +66,5 @@ public class controllPoint : MonoBehaviour
             guideline.gameObject.SetActive(false);
         }
     }
+
 }
