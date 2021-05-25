@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class controllPoint : powerUp
+public class controllPoint : MonoBehaviour
 {
     [SerializeField]
     private Button shootButton;
     // [SerializeField]
     // private Text textPowerAmt;
-    // public float nilaiGauge = 0.0f;
-    public powerUp powerUp;
+    public static float nilaiGauge ;
 
     float xRot, yRot = 0f;
 
@@ -19,9 +18,10 @@ public class controllPoint : powerUp
 
     public float rotationSpeed = 5f;
     // private float shootPower = 0.1f;
-    public float shootPower = 2f;
+    public float shootPower = 0.0f;
 
     public LineRenderer guideline;
+    // public powerUp first;
 
 void Update ()
     {
@@ -47,14 +47,16 @@ void Update ()
 
     public void shoot()
         {
+            nilaiGauge = powerUp.amtPower;
+            Debug.Log(nilaiGauge);
             pressShoot ();
             // nilaiGauge = amtPower;
             // int.TryParse(powerGauge, out nilaiGauge);
-            Debug.Log(amtPower);
+            // GameObject thePlayer = GameObject.Find("ThePlayer");
+            // powerUp powerUp = thePlayer.GetComponent<powerUp>();
+            // powerUp.amtPower = nilaiGauge;
+            // first.powerGaugeClass();
         }
-
-    
-    
 
     void pressShoot()
     {
@@ -62,7 +64,8 @@ void Update ()
         {
             // shootPower =textPowerAmt;
             // textPowerAmt.text = shootPower.ToString("F0");
-            ball.velocity = transform.forward * shootPower ;
+            shootPower = nilaiGauge;
+            ball.velocity = transform.forward * shootPower / 5.0f;
             guideline.gameObject.SetActive(false);
         }
     }

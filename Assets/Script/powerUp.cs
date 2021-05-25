@@ -13,7 +13,7 @@ public class powerUp : MonoBehaviour
 
     private bool isPowerUp = false;
     private bool isDirectionUp = true;
-    public float amtPower = 0.0f;
+    public static float amtPower = 0.0f;
     private float powerSpeed = 100.0f;
 
     public float powerGauge;
@@ -67,6 +67,6 @@ public class powerUp : MonoBehaviour
 
     // public void powerGaugeClass()
     // {
-        
+    //     Debug.Log(amtPower);
     // }
 }

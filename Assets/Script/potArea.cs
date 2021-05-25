@@ -9,11 +9,21 @@ public class potArea : MonoBehaviour
     public int scorePoint = 0;
     public Text ScoreText;
     public int MaxScore;
+    public bool player1;
+    public bool player2;
     public GameObject Gameover;
     // public Text ScoreText;
 
 
     // Use this for initialization
+    void Update(){
+        
+        ScoreText.text = "Score = " + scorePoint.ToString("F0") ;
+        if(scorePoint == MaxScore){
+            Gameover.SetActive(true);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 
     void OnTriggerExit (Collider other)
     {
@@ -23,11 +33,5 @@ public class potArea : MonoBehaviour
             Destroy (other.gameObject,2f);
         }
     }
-    void Update(){
-        ScoreText.text = "Score = " + scorePoint.ToString("F0") ;
-        if(scorePoint == MaxScore){
-            Gameover.SetActive(true);
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
+    
 }

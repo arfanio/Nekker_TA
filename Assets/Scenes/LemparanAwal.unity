@@ -1264,6 +1264,8 @@ MonoBehaviour:
   scorePoint: 0
   ScoreText: {fileID: 226192765}
   MaxScore: 6
+  player1: 0
+  player2: 0
   Gameover: {fileID: 924728502}
 --- !u!64 &848311226
 MeshCollider:
@@ -2667,12 +2669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00829f83910a8524296afe118a492335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imagePowerup: {fileID: 0}
-  textPowerAmt: {fileID: 0}
-  amtPower: 0
-  powerGauge: 0
   shootButton: {fileID: 1673038354}
-  powerUp: {fileID: 0}
   ball: {fileID: 1660903551}
   rotationSpeed: 5
   shootPower: 10
@@ -3234,7 +3231,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagePowerup: {fileID: 612874684}
   textPowerAmt: {fileID: 2059671713}
-  amtPower: 0
   powerGauge: 0
 --- !u!114 &1673038354
 MonoBehaviour:
