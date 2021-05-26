@@ -25,26 +25,31 @@ public class controllPoint : MonoBehaviour
 
 void Update ()
     {
-        transform.position = ball.position;
-        if (Input.GetMouseButton(0))
-        {
-            xRot += Input.GetAxis("Mouse X") * rotationSpeed;
-            yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-            if (yRot < -35f)
-            {
-                yRot = -35f;
-            }
-            transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-            guideline.gameObject.SetActive(true);
-            guideline.SetPosition(0, transform.position);
-            guideline.SetPosition(1, transform.position + transform.forward * 4f);
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            guideline.gameObject.SetActive(false);
-        }
+        aimView();
     }
 
+    public void aimView()
+        {
+            transform.position = ball.position;
+            if (Input.GetMouseButton(0))
+            {
+                xRot += Input.GetAxis("Mouse X") * rotationSpeed;
+                yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
+                if (yRot < -35f)
+                {
+                    yRot = -35f;
+                }
+                transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                guideline.gameObject.SetActive(true);
+                guideline.SetPosition(0, transform.position);
+                guideline.SetPosition(1, transform.position + transform.forward * 4f);
+            }
+            if (Input.GetMouseButtonUp(0))
+                {
+                    guideline.gameObject.SetActive(false);
+                }
+        }
+        
     public void shoot()
         {
             nilaiGauge = powerUp.amtPower;
