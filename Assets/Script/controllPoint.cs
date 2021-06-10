@@ -1,31 +1,33 @@
-using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class controllPoint : NetworkBehaviour
+public class controllPoint : MonoBehaviour
 {
     [SerializeField]
     private Button shootButton;
+    // [SerializeField]
+    // private Text textPowerAmt;
     public static float nilaiGauge ;
-    float xRot, yRot = 0f;
-    public Rigidbody ball;
-    public float rotationSpeed = 5f;
-    public float shootPower = 0.0f;
-    public LineRenderer guideline;
 
-void HandledMovement()
+    float xRot, yRot = 0f;
+
+    public Rigidbody ball;
+
+    public float rotationSpeed = 5f;
+    // private float shootPower = 0.1f;
+    public float shootPower = 0.0f;
+
+    public LineRenderer guideline;
+    // public powerUp first;
+
+void Update ()
     {
-        if(isLocalPlayer){
-            aimView();
-        } 
+        aimView();
     }
 
-void Update(){
-    HandledMovement();
-}
     public void aimView()
         {
             transform.position = ball.position;
@@ -51,7 +53,7 @@ void Update(){
     public void shoot()
         {
             nilaiGauge = powerUp.amtPower;
-            // Debug.Log(nilaiGauge);
+            Debug.Log(nilaiGauge);
             pressShoot ();
             // nilaiGauge = amtPower;
             // int.TryParse(powerGauge, out nilaiGauge);
