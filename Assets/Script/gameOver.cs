@@ -11,4 +11,9 @@ public class gameOver : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+
+    public void backmenuClicked()
+    {
+        
+    }
 }

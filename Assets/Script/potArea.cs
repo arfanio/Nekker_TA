@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class potArea : MonoBehaviour
 {
-    public int scorePoint = 0;
+    public static int scorePoint = 0;
     public Text ScoreText;
     public int MaxScore;
     public GameObject Gameover;
