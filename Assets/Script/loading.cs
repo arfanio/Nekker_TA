@@ -22,7 +22,7 @@ public class loading : MonoBehaviour
         }
         else
         {
-            Application.LoadLevel("...");
+            Application.LoadLevel("Menu");
         }
         masukanLoadingbar.GetComponent<Image>().fillAmount = nilaiSekarang / 100;
     }
