@@ -8,12 +8,13 @@ public class gameOver : MonoBehaviour
 {
    public void ulangiClicked()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
 
     public void backmenuClicked()
     {
-        
+        Application.LoadLevel(1);
     }
 }

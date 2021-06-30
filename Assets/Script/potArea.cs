@@ -22,10 +22,14 @@ public class potArea : MonoBehaviour
             scorePoint += 1;
             Destroy (other.gameObject,2f);
         }
+        if(scorePoint == MaxScore){
+            save_point.simpan_skor();
+        }
     }
     void Update(){
         ScoreText.text = "Score = " + scorePoint.ToString("F0") ;
         if(scorePoint == MaxScore){
+
             Gameover.SetActive(true);
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

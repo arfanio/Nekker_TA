@@ -19,7 +19,7 @@ public class mainMenu : MonoBehaviour
         
     }
 
-    public void mainClicked()
+         public void playClicked()
     {
         bg.SetActive(false);
         main.SetActive(true);
@@ -56,9 +56,15 @@ public class mainMenu : MonoBehaviour
         shop.SetActive(false);
     }
 
-    public void sendiriClicked()
+    public void multiplayerClicked()
     {
-        Application.LoadLevel("Lemparan Awal");
+        Application.LoadLevel("LemparanAwal");
     }
+
+    public void soloClicked()
+    {
+        Application.LoadLevel("SoloPlayer");
+    }
+
 
 }
