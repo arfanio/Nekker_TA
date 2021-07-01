@@ -22,11 +22,13 @@ public class player : NetworkBehaviour
             {
                 if (isServer )
                 {
+                    pressShoot();
                     aimView();
                     mainCamera.gameObject.SetActive(true);
                 }
                 if (isClient)
                 {
+                    pressShoot();
                     aimView();
                     mainCamera.gameObject.SetActive(true);
                 }
@@ -58,6 +60,8 @@ public class player : NetworkBehaviour
         
     public void shoot()
         {
+            if(isLocalPlayer)
+            {
             nilaiGauge = powerUp.amtPower;
             Debug.Log(nilaiGauge);
             pressShoot ();
@@ -67,6 +71,7 @@ public class player : NetworkBehaviour
             // powerUp powerUp = thePlayer.GetComponent<powerUp>();
             // powerUp.amtPower = nilaiGauge;
             // first.powerGaugeClass();
+            }
         }
 
     void pressShoot()
