@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 537700641185764771}
   - component: {fileID: 6867823264013518833}
   - component: {fileID: 1139490965854654986}
+  - component: {fileID: 1564655308485045360}
   m_Layer: 0
   m_Name: Gaco_2
   m_TagString: Untagged
@@ -152,6 +153,28 @@ MonoBehaviour:
   compressRotation: 0
   interpolateScale: 1
   syncScale: 1
+--- !u!114 &1564655308485045360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228960425918910187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83392ae5c1b731446909f252fd494ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  target: {fileID: 537700641185764771}
+  clientAuthority: 1
+  syncVelocity: 1
+  clearVelocity: 0
+  velocitySensitivity: 0.1
+  syncAngularVelocity: 1
+  clearAngularVelocity: 0
+  angularVelocitySensitivity: 0.1
 --- !u!1 &1587452563464744389
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8333be1321c45747841af9457aa646f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   shootButton: {fileID: 9177676426753507967}
   ball_id: 1
   ball_1: {fileID: 4365437243280349115}
@@ -581,6 +606,7 @@ GameObject:
   - component: {fileID: 638757520112502803}
   - component: {fileID: 4653540441762306286}
   - component: {fileID: 3354952809432938922}
+  - component: {fileID: 4016355476356448519}
   m_Layer: 0
   m_Name: Gaco_3
   m_TagString: Untagged
@@ -720,6 +746,28 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 289301614986012343, guid: 3e39b902e46891a48b03102445212a5d, type: 3}
+--- !u!114 &4016355476356448519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3410249916427700159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83392ae5c1b731446909f252fd494ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  target: {fileID: 6748969952127730458}
+  clientAuthority: 1
+  syncVelocity: 1
+  clearVelocity: 0
+  velocitySensitivity: 0.1
+  syncAngularVelocity: 1
+  clearAngularVelocity: 0
+  angularVelocitySensitivity: 0.1
 --- !u!1 &3932500488898306275
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +938,7 @@ GameObject:
   - component: {fileID: 7224261734111361267}
   - component: {fileID: 8548976822676704717}
   - component: {fileID: 7822721173349454287}
+  - component: {fileID: 6102892420347453462}
   m_Layer: 0
   m_Name: Gaco_4
   m_TagString: Untagged
@@ -1027,6 +1076,28 @@ MonoBehaviour:
   compressRotation: 0
   interpolateScale: 1
   syncScale: 1
+--- !u!114 &6102892420347453462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4280996239755035411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83392ae5c1b731446909f252fd494ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  target: {fileID: 7224261734111361267}
+  clientAuthority: 1
+  syncVelocity: 1
+  clearVelocity: 0
+  velocitySensitivity: 0.1
+  syncAngularVelocity: 1
+  clearAngularVelocity: 0
+  angularVelocitySensitivity: 0.1
 --- !u!1 &5378735707628346970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1194,7 @@ GameObject:
   - component: {fileID: 4365437243280349115}
   - component: {fileID: 8428593391713781185}
   - component: {fileID: 365378154647467374}
+  - component: {fileID: 7177413372678470095}
   m_Layer: 0
   m_Name: Gaco_1
   m_TagString: Untagged
@@ -1260,6 +1332,28 @@ MonoBehaviour:
   compressRotation: 0
   interpolateScale: 1
   syncScale: 1
+--- !u!114 &7177413372678470095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375178546475109949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83392ae5c1b731446909f252fd494ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  target: {fileID: 4365437243280349115}
+  clientAuthority: 1
+  syncVelocity: 1
+  clearVelocity: 0
+  velocitySensitivity: 0.1
+  syncAngularVelocity: 1
+  clearAngularVelocity: 0
+  angularVelocitySensitivity: 0.1
 --- !u!1 &7948350070551173576
 GameObject:
   m_ObjectHideFlags: 0

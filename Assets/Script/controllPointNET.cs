@@ -9,27 +9,19 @@ public class controllPointNET : NetworkBehaviour
 {
     [SerializeField]
     private Button shootButton;
-    // [SerializeField]
-    // private Text textPowerAmt;
     public static float nilaiGauge ;
-
     float xRot, yRot = 0f;
-
     public int ball_id;
     public Rigidbody ball_1;
     public Rigidbody ball_2;
     public Rigidbody ball_3;
     public Rigidbody ball_4;
-
     public float rotationSpeed = 0.2f;
-    // private float shootPower = 0.1f;
     public float shootPower = 0.0f;
-
     public LineRenderer guideline;
-    // public powerUp first;
-
         void Start ()
         {
+            
             ball_id = PlayerPrefs.GetInt ("id_gaco");
             if (ball_id == 0)
             {
@@ -56,12 +48,22 @@ public class controllPointNET : NetworkBehaviour
                 ball_4.gameObject.SetActive(true);
                 transform.position = ball_4.position;
             }
+            
+            
         }
 
     void Update ()
         {
-             if (isLocalPlayer){
-                aimView();
+            if (isLocalPlayer)
+            {
+                if (isServer )
+                {
+                    aimView();
+                }
+                if (isClient)
+                {
+                    aimView();
+                }
             }
         }
 
@@ -194,8 +196,7 @@ public class controllPointNET : NetworkBehaviour
 
     void pressShoot()
     {
-        if (isLocalPlayer)
-        {
+        if (isLocalPlayer){
             if (Input.GetMouseButtonUp(0))
             {
             // shootPower =textPowerAmt;
@@ -227,8 +228,9 @@ public class controllPointNET : NetworkBehaviour
                 guideline.gameObject.SetActive(false);
             }
             
-            }
         }
+        }
+        
     }
 
 }
