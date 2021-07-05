@@ -7,12 +7,14 @@ using TMPro;
 public class controllPoint : MonoBehaviour
 {
     [SerializeField]
-    private Button shootButton;
+    private GameObject shootButton;
     // [SerializeField]
     // private Text textPowerAmt;
     public static float nilaiGauge ;
 
     float xRot, yRot = 0f;
+    float speed;
+    // public bool ballStop;
 
     public int ball_id;
     public Rigidbody ball_1;
@@ -20,13 +22,16 @@ public class controllPoint : MonoBehaviour
     public Rigidbody ball_3;
     public Rigidbody ball_4;
 
+    private Transform startPOS;
+    Vector3 posisiAwal;
+
     public float rotationSpeed = 0.2f;
     // private float shootPower = 0.1f;
     public float shootPower = 0.0f;
 
     public LineRenderer guideline;
     // public powerUp first;
-
+    
         void Start ()
         {
             ball_id = PlayerPrefs.GetInt ("id_gaco");
@@ -44,6 +49,8 @@ public class controllPoint : MonoBehaviour
             {
                 ball_2.gameObject.SetActive(true);
                 transform.position = ball_2.position;
+                startPOS = ball_2.transform;
+                posisiAwal = startPOS.position;
             }
             if (ball_id == 3)
             {
@@ -59,69 +66,50 @@ public class controllPoint : MonoBehaviour
 
     void Update ()
         {
-            aimView();
-            // Debug.Log(ball_id);
+            // aimView();
+            
+            // if (ball_id == 2){
+            //     transform.position = ball_2.position;
+                aimView();
+                // if (transform.position == posisiAwal){
+                //     Debug.Log("posisi awal dicatat");
+                // }
+                // else {
+                //     shootButton.gameObject.SetActive(false);
+                //     if (transform.hasChanged){
+                //     shootButton.gameObject.SetActive(true);
+                //     // transform.hasChanged = false;
+                //     // if (transform.hasChanged = false){
+                //     //     shootButton.gameObject.SetActive(false);
+                //     // }
+                // }
+                // }
+                
+            // else{
+            //     shootButton.gameObject.SetActive(false);
+                
+            // }
+        //     speed = ball_2.velocity.magnitude;
+        //     if(speed < 0.5) {
+        //         ball_2.rigidbody.velocity = new Vector3(0, 0, 0);
+        //         ballStop = true;
+        //         //Or
+        //     //     gameObject.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        //     // }
+        //     if(speed >= 0.5) {
+        //         ball_2.rigidbody.velocity = new Vector3(0, 0, 0);
+        //         ballStop = false;
+        //     }
+        // }
         }
-
+        
     public void aimView()
         {
-            // if (ball_id == 0){
-            //     // Vector3 posisiAwal = ball_1.position;
-            //     transform.position = ball_1.position;
-                
-            //     if (transform.rotation == ball_1.rotation){
-            //         if (Input.touches.Length > 0){
-            //             if ((Input.touches[0].phase == TouchPhase.Moved) )
-            //             {
-            //                 xRot += Input.GetAxis("Mouse X") * rotationSpeed;
-            //                 yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-            //                 if (yRot < -35f)
-            //                 {
-            //                     yRot = -35f;
-            //                 }
-            //                 transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-            //                 guideline.gameObject.SetActive(true);
-            //                 guideline.SetPosition(0, transform.position);
-            //                 guideline.SetPosition(1, transform.position + transform.forward * 4f);
-            //             }
-            //         if (Input.GetMouseButtonUp(0))
-            //             {
-            //                 guideline.gameObject.SetActive(false);
-            //             }
-            //         }
-            //     }
-            //     }
-
-            // if (ball_id == 1){
-            //     // Vector3 posisiAwal = ball_1.position;
-            //     transform.position = ball_1.position;
-            //     if (transform.rotation == ball_1.rotation){
-            //             if (Input.touches.Length > 0){
-            //             if ((Input.touches[0].phase == TouchPhase.Moved) )
-            //             {
-            //                 xRot += Input.GetAxis("Mouse X") * rotationSpeed;
-            //                 yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-            //                 if (yRot < -35f)
-            //                 {
-            //                     yRot = -35f;
-            //                 }
-            //                 transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-            //                 guideline.gameObject.SetActive(true);
-            //                 guideline.SetPosition(0, transform.position);
-            //                 guideline.SetPosition(1, transform.position + transform.forward * 4f);
-            //             }
-            //         if (Input.GetMouseButtonUp(0))
-            //             {
-            //                 guideline.gameObject.SetActive(false);
-            //             }
-            //         }
-            //     }
-            //     }
                 
             if (ball_id == 0){
                 transform.position = ball_1.position;
                 // Vector3 posisiAwal = ball_1.position;
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) )
+                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
                 {
                     xRot += Input.GetAxis("Mouse X") * rotationSpeed;
                     yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
@@ -162,10 +150,10 @@ public class controllPoint : MonoBehaviour
                     }
                 }
 
-            if (ball_id == 2){
+            if (ball_id == 2 ){
                 transform.position = ball_2.position;
                 // Vector3 posisiAwal = ball_2.position;
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved ))
+                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0) ))
                 {
                     xRot += Input.GetAxis("Mouse X") * rotationSpeed;
                     yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
@@ -231,9 +219,12 @@ public class controllPoint : MonoBehaviour
         
     public void shoot()
         {
+            // transform.position = ball_2.position;
+            if (transform.hasChanged){
             nilaiGauge = powerUp.amtPower;
             Debug.Log(nilaiGauge);
             pressShoot ();
+            }
             // nilaiGauge = amtPower;
             // int.TryParse(powerGauge, out nilaiGauge);
             // GameObject thePlayer = GameObject.Find("ThePlayer");

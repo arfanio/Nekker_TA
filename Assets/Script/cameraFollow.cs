@@ -6,9 +6,13 @@ public class cameraFollow : MonoBehaviour
 {
     
 
+    public LineRenderer guideline;
     public Transform targetObject;
 
-    public Vector3 cameraOffset;
+    public Vector3 cameraOffset_1;
+    public Vector3 cameraOffset_2;
+
+    float xRot, yRot = 0f;
 
     public float smoothFactor = 0.5f ;
 
@@ -16,12 +20,36 @@ public class cameraFollow : MonoBehaviour
     
     void Start()
     {
-        cameraOffset = transform.position - targetObject.transform.position;
+        cameraOffset_1 = transform.position - targetObject.transform.position;
     }
 
     void LateUpdate()
     {
-        Vector3 newPosition = targetObject.transform.position + cameraOffset;
+        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) ){
+            transform.position = targetObject.transform.position + cameraOffset_2;
+            if (lookAtTarget)
+            {
+                xRot += Input.GetAxis("Mouse X") ;
+                yRot += Input.GetAxis("Mouse Y") ;
+                    if (yRot < -35f)
+                    {
+                        yRot = -35f;
+                    }
+                    transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                    guideline.gameObject.SetActive(true);
+                    guideline.SetPosition(0, transform.position);
+                    guideline.SetPosition(1, transform.position + transform.forward * 4f);
+            }
+            
+        }
+        else{
+            tripod();
+        }
+        
+    }
+
+    public void tripod(){
+        Vector3 newPosition = targetObject.transform.position + cameraOffset_1;
         transform.position = Vector3.Slerp(transform.position, newPosition,smoothFactor);
     
         if (lookAtTarget)
@@ -29,4 +57,5 @@ public class cameraFollow : MonoBehaviour
             transform.LookAt(targetObject);
         }
     }
+    
 }

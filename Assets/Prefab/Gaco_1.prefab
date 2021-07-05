@@ -35,7 +35,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.21, z: -6.69}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
-  - {fileID: 9119239045459492658}
+  - {fileID: 8018370860128209857}
   - {fileID: 5309038167960562151}
   - {fileID: 3023659772677865415}
   m_Father: {fileID: 0}
@@ -1740,13 +1740,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5309038167960562149}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.26405895, y: 4.123, z: -7.129633}
+  m_LocalRotation: {x: 0.18212466, y: -0.0072910874, z: -0.0023206738, w: 0.98324573}
+  m_LocalPosition: {x: 0.02000004, y: 1.3300004, z: -2.0699992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1383267643260280134}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.984, y: -0.932, z: -0.443}
 --- !u!120 &5309038167960562150
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1790,6 +1790,7 @@ LineRenderer:
   m_Positions:
   - {x: -0.50729, y: 0.1499994, z: -7.433041}
   - {x: -0.48983675, y: 0.1499994, z: -3.4330792}
+  - {x: -0.48983675, y: 0.1499994, z: -3.4330792}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -1825,7 +1826,7 @@ LineRenderer:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0.50724787
+        value: 0.9876403
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1883,6 +1884,7 @@ GameObject:
   - component: {fileID: 8018370860128209857}
   - component: {fileID: 8018370860128209856}
   - component: {fileID: 8018370860128209862}
+  - component: {fileID: 7164093038862890472}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1898,10 +1900,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8018370860128209860}
   m_LocalRotation: {x: 0.18212466, y: -0.0072910874, z: -0.0023206738, w: 0.98324573}
-  m_LocalPosition: {x: 0.085217685, y: -0.8379001, z: 1.5178899}
-  m_LocalScale: {x: 0.30000004, y: 0.3, z: 0.30000004}
+  m_LocalPosition: {x: 0.02000004, y: 1.3300004, z: -2.0699992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 9119239045459492658}
+  m_Father: {fileID: 1383267643260280134}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 20.984, y: -0.932, z: -0.443}
 --- !u!20 &8018370860128209856
@@ -1929,7 +1931,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 103
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1955,34 +1957,21 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8018370860128209860}
   m_Enabled: 1
---- !u!1 &9202566941711181017
-GameObject:
+--- !u!114 &7164093038862890472
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9119239045459492658}
-  m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9119239045459492658
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9202566941711181017}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.26405892, y: 4.123, z: -7.129632}
-  m_LocalScale: {x: 3.333333, y: 3.333333, z: 3.333333}
-  m_Children:
-  - {fileID: 8018370860128209857}
-  m_Father: {fileID: 1383267643260280134}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 8018370860128209860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad7b310dd1185c4cab80dce72fa4283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guideline: {fileID: 5309038167960562150}
+  targetObject: {fileID: 1383267643260280134}
+  cameraOffset_1: {x: 0, y: 0, z: 0}
+  cameraOffset_2: {x: 0, y: 0.5, z: 0.5}
+  smoothFactor: 5
+  lookAtTarget: 1

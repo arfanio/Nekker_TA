@@ -48,9 +48,9 @@ public class player : NetworkBehaviour
                         yRot = -35f;
                     }
                     transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-                    guideline.gameObject.SetActive(true);
-                    guideline.SetPosition(0, transform.position);
-                    guideline.SetPosition(1, transform.position + transform.forward * 4f);
+                    // guideline.gameObject.SetActive(true);
+                    // guideline.SetPosition(0, transform.position);
+                    // guideline.SetPosition(1, transform.position + transform.forward * 4f);
                 }
                 if (Input.GetMouseButtonUp(0))
                     {
