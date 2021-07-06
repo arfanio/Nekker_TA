@@ -25,8 +25,8 @@ public class cameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) ){
-            transform.position = targetObject.transform.position + cameraOffset_2;
+        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) ){
+            
             if (lookAtTarget)
             {
                 xRot += Input.GetAxis("Mouse X") ;

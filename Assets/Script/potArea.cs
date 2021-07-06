@@ -48,6 +48,8 @@ public class potArea : MonoBehaviour
         if(scorePoint == MaxScore){
 
             Gameover.SetActive(true);
+            scorePoint = 0;
+            Debug.Log("ulangteross");
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

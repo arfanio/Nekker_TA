@@ -14,6 +14,7 @@ public class player : NetworkBehaviour
     public float rotationSpeed = 0.2f;
     public float shootPower = 0.0f;
     public GameObject mainCamera;
+    public GameObject power;
     public LineRenderer guideline;
 
     void Update ()
@@ -22,15 +23,17 @@ public class player : NetworkBehaviour
             {
                 if (isServer )
                 {
-                    pressShoot();
+                    
                     aimView();
                     mainCamera.gameObject.SetActive(true);
+                    
                 }
                 if (isClient)
                 {
-                    pressShoot();
+                    
                     aimView();
                     mainCamera.gameObject.SetActive(true);
+                    
                 }
             }
         }
@@ -48,9 +51,9 @@ public class player : NetworkBehaviour
                         yRot = -35f;
                     }
                     transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-                    // guideline.gameObject.SetActive(true);
-                    // guideline.SetPosition(0, transform.position);
-                    // guideline.SetPosition(1, transform.position + transform.forward * 4f);
+                     guideline.gameObject.SetActive(true);
+                     guideline.SetPosition(0, transform.position);
+                     guideline.SetPosition(1, transform.position + transform.forward * 4f);
                 }
                 if (Input.GetMouseButtonUp(0))
                     {
@@ -60,8 +63,6 @@ public class player : NetworkBehaviour
         
     public void shoot()
         {
-            if(isLocalPlayer)
-            {
             nilaiGauge = powerUp.amtPower;
             Debug.Log(nilaiGauge);
             pressShoot ();
@@ -71,19 +72,18 @@ public class player : NetworkBehaviour
             // powerUp powerUp = thePlayer.GetComponent<powerUp>();
             // powerUp.amtPower = nilaiGauge;
             // first.powerGaugeClass();
-            }
         }
 
     void pressShoot()
     {
-        if (isLocalPlayer){
+        
             if (Input.GetMouseButtonUp(0))
             {
                 shootPower = nilaiGauge;
                 ball_1.velocity = transform.forward * shootPower / 5.0f;
                 guideline.gameObject.SetActive(false);            
             }
-        }
+        
         
     }
 

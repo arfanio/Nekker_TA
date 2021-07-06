@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Mirror;
 
-public class powerUp : MonoBehaviour
+public class powerUp : NetworkBehaviour
 {
     [SerializeField]
     private Image imagePowerup;
