@@ -194,10 +194,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  delay: 1
+  waktuBerjalan: 0
   ball_id: 0
   ball_1: {fileID: 7379651866199589319}
   rotationSpeed: 0.2
   shootPower: 0
+  giliran: 1
   mainCamera: {fileID: 8018370860128209860}
   power: {fileID: 3023659772413004268}
   target: {fileID: 0}
@@ -255,7 +258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3023659772413004275
 RectTransform:
   m_ObjectHideFlags: 0

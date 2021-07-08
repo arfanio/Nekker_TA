@@ -7,57 +7,36 @@ using Mirror;
 
 public class potAreaNET : NetworkBehaviour
 {
-    // public static int scorePoint = 0;
     public static int scorePointP1 = 0;
     public static int scorePointP2 = 0;
     public static int totalScorePoint = 0;
-    float speed;
-    // public Text ScoreText;
     public Text ScoreTextP1;
     public Text ScoreTextP2;
-    GameObject ball_1;
-    GameObject ball_2;
-    Rigidbody ball_1_TR;
-    Rigidbody ball_2_TR;
     public int MaxScore;
+    public bool lifeP1 = false;
+    public bool lifeP2 = false;
     public GameObject Gameover;
+    public GameObject loveP1_1;
+    public GameObject loveP1_2;
+    public GameObject loveP2_1;
+    public GameObject loveP2_2;
     
 
-
-    // Use this for initialization
-    void Start(){
-        if (isLocalPlayer)
+    void OnTriggerEnter (Collider other)
             {
-                
-                if (isServer )
+                if (other.gameObject.tag == "Gaco" && player.giliran == true)
                 {
-                    ball_1 = GameObject.FindWithTag("Gaco");
-                    ball_1_TR = GetComponent<Rigidbody>();
-                    Debug.Log("Gaco Server");
-                    // transform.position = ball_1.position;
-                    
+                    Debug.Log("Anda Mati");
+                    Destroy(loveP1_1.gameObject);
+                    lifeP1 = true;
                 }
-                if (isClient)
-                {
-                    ball_2 = GameObject.FindWithTag("Gaco");
-                    ball_2_TR = GetComponent<Rigidbody>();
-                    Debug.Log("Gaco Client");
-                    // transform.position = ball_2.position;
 
-                    
+                if (other.gameObject.tag == "Gaco" && player.giliran == true && lifeP1 == true)
+                {
+                    Debug.Log("Anda Mati");
+                    Destroy(loveP1_2.gameObject);
                 }
             }
-    }
-    // void OnTriggerEnter (Collider other)
-    //         {
-    //             if (speed < 0.5){
-    //                 if (other.gameObject.tag == "Gaco")
-    //                 {
-    //                     Debug.Log("Anda Mati");
-    //                 }
-    //             }
-                
-    //         }
      
 
 
@@ -73,6 +52,22 @@ public class potAreaNET : NetworkBehaviour
         }
     }
     void Update(){
+
+        // if (isLocalPlayer)
+        //     {
+                
+        //         if (isServer )
+        //         {
+        //             ball_1_TR.position = ball_1_Rb.position;
+        //             transform.position = ball_1_TR.position;
+                    
+        //         }
+        //         if (isClient)
+        //         {
+        //             ball_2_TR.position = ball_2_Rb.position;
+        //             transform.position = ball_2_TR.position;
+        //         }
+        //     }
         
         ScoreTextP1.text = "Score = " + scorePointP1.ToString("F0") ;
         ScoreTextP2.text = "Score = " + scorePointP2.ToString("F0") ;
