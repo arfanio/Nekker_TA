@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using Mirror;
 
-public class follower : MonoBehaviour
+public class follower : NetworkBehaviour
 {
     public Transform targetObject;
 
@@ -14,30 +17,67 @@ public class follower : MonoBehaviour
 
     public bool RotateAroundPlayer = true;
 
-    public float RotationSpeed = 5.0f;
+    public float RotationSpeed = 0.2f;
 
     void Start()
     {
-        cameraOffset = transform.position - targetObject.transform.position;
-
+        // if(isLocalPlayer){
+        //     if(isServer){
+        //         cameraOffset = transform.position - targetObject.transform.position;
+        //     }
+        //     if(isClient){
+        //         cameraOffset = transform.position - targetObject.transform.position;
+        //     }
+            cameraOffset = transform.position - targetObject.transform.position;
+        // }
     }
 
     void LateUpdate()
     {
-        if(RotateAroundPlayer)
-        {
-            Quaternion camTurnAngle =
-                Quaternion.AngleAxis(Input.GetAxis("Mouse x") * RotationSpeed, Vector3.up);
+        // if (isLocalPlayer)
+        //     {
+        //         if (isServer )
+        //         {
+                   if(RotateAroundPlayer)
+                    {
+                        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) ){
+                            Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
 
-                cameraOffset = camTurnAngle * cameraOffset;
-        }
+                            cameraOffset = camTurnAngle * cameraOffset;
+                        }
+                    
+                    }
 
-        Vector3 newPosition = targetObject.transform.position + cameraOffset;
-        transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
+                    Vector3 newPosition = targetObject.transform.position + cameraOffset;
+                    transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
 
-        if (lookAtTarget || RotateAroundPlayer)
-        {
-            transform.LookAt(targetObject);
-        }
+                    if (lookAtTarget && RotateAroundPlayer)
+                    {
+                        transform.LookAt(targetObject);
+                    }
+                // }
+
+            //     if (isClient)
+            //     {
+            //         if(RotateAroundPlayer)
+            //         {
+            //             if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) ){
+            //                 Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
+
+            //                 cameraOffset = camTurnAngle * cameraOffset;
+            //             }
+                    
+            //         }
+
+            //         Vector3 newPosition = targetObject.transform.position + cameraOffset;
+            //         transform.position = Vector3.Slerp(transform.position, newPosition, smoothFactor);
+
+            //         if (lookAtTarget && RotateAroundPlayer)
+            //         {
+            //             transform.LookAt(targetObject);
+            //         }
+            //     }
+            // }
+        
     }
 }

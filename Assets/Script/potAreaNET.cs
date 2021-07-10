@@ -13,29 +13,53 @@ public class potAreaNET : NetworkBehaviour
     public Text ScoreTextP1;
     public Text ScoreTextP2;
     public int MaxScore;
-    public bool lifeP1 = false;
-    public bool lifeP2 = false;
+    public static bool lifeP1 = false;
+    public static bool lifeP2 = false;
     public GameObject Gameover;
     public GameObject loveP1_1;
-    public GameObject loveP1_2;
+    // public GameObject loveP1_2;
     public GameObject loveP2_1;
-    public GameObject loveP2_2;
+    // public GameObject loveP2_2;
     
 
     void OnTriggerEnter (Collider other)
             {
-                if (other.gameObject.tag == "Gaco" && player.giliran == true)
-                {
-                    Debug.Log("Anda Mati");
-                    Destroy(loveP1_1.gameObject);
-                    lifeP1 = true;
-                }
-
-                if (other.gameObject.tag == "Gaco" && player.giliran == true && lifeP1 == true)
-                {
-                    Debug.Log("Anda Mati");
-                    Destroy(loveP1_2.gameObject);
-                }
+                if (other.gameObject.tag == "Gaco" && player.giliranP1 == true )
+                    {
+                        lifeP2 = true;
+                        Debug.Log("P2 Mati");
+                        Debug.Log("lifeP1");
+                        Destroy(loveP2_1.gameObject);
+                    }
+                if (other.gameObject.tag == "Gaco" && player.giliranP2 == true )
+                    {
+                        lifeP1 = true;
+                        Debug.Log("P1 Mati");
+                        Debug.Log("lifeP2");
+                        Destroy(loveP1_1.gameObject);
+                    }
+                // if (isLocalPlayer)
+                // {
+                
+                // if (isServer )
+                // {
+                //     if (other.gameObject.tag == "Gaco" && player.giliran == true)
+                //     {
+                //         Debug.Log("Anda Mati");
+                //         Destroy(loveP1_1.gameObject);
+                //         lifeP1 = true;
+                //     }
+                    
+                // }
+                // if (isClient){
+                //     if (other.gameObject.tag == "Gaco" && player.giliran == true)
+                //     {
+                //         Debug.Log("Anda Mati");
+                //         Destroy(loveP2_1.gameObject);
+                //         lifeP1 = true;
+                //     }
+                // }
+                // }
             }
      
 

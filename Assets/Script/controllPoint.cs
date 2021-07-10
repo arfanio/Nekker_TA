@@ -8,8 +8,6 @@ public class controllPoint : MonoBehaviour
 {
     [SerializeField]
     private GameObject shootButton;
-    // [SerializeField]
-    // private Text textPowerAmt;
     public static float nilaiGauge ;
 
     float xRot, yRot = 0f;
@@ -23,7 +21,7 @@ public class controllPoint : MonoBehaviour
     public Rigidbody ball_4;
 
     private Transform startPOS;
-    Vector3 posisiAwal;
+    public static Vector3 posisiAwal;
 
     public float rotationSpeed = 0.2f;
     // private float shootPower = 0.1f;
@@ -31,6 +29,11 @@ public class controllPoint : MonoBehaviour
 
     public LineRenderer guideline;
     // public powerUp first;
+
+        void Awake(){
+            // startPOS = ball_2.transform;
+            posisiAwal = ball_2.position;
+        }
     
         void Start ()
         {
@@ -49,8 +52,9 @@ public class controllPoint : MonoBehaviour
             {
                 ball_2.gameObject.SetActive(true);
                 transform.position = ball_2.position;
-                startPOS = ball_2.transform;
-                posisiAwal = startPOS.position;
+
+                // startPOS = ball_2.transform;
+                // posisiAwal = startPOS.position;
             }
             if (ball_id == 3)
             {
@@ -66,24 +70,25 @@ public class controllPoint : MonoBehaviour
 
     void Update ()
         {
-            // aimView();
+            aimView();
             
             // if (ball_id == 2){
-            //     transform.position = ball_2.position;
-                aimView();
-                // if (transform.position == posisiAwal){
-                //     Debug.Log("posisi awal dicatat");
+                // transform.position = ball_2.position;
+                
+                // if (transform.hasChanged){
+                //     Debug.Log("udah false");
+                //     shootButton.gameObject.SetActive(true);
+                //     aimView();
+                //     transform.hasChanged = false;
                 // }
                 // else {
                 //     shootButton.gameObject.SetActive(false);
-                //     if (transform.hasChanged){
-                //     shootButton.gameObject.SetActive(true);
-                //     // transform.hasChanged = false;
-                //     // if (transform.hasChanged = false){
-                //     //     shootButton.gameObject.SetActive(false);
-                //     // }
+                //     Debug.Log("udah else");
+                //     aimView();
+                //     transform.hasChanged = false;
+
                 // }
-                // }
+            
                 
             // else{
             //     shootButton.gameObject.SetActive(false);
@@ -109,110 +114,173 @@ public class controllPoint : MonoBehaviour
             if (ball_id == 0){
                 transform.position = ball_1.position;
                 // Vector3 posisiAwal = ball_1.position;
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
-                {
-                    xRot += Input.GetAxis("Mouse X") * rotationSpeed;
-                    yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-                    if (yRot < -30f)
+                 if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
                     {
-                        yRot = -30f;
+                        xRot += Input.GetAxis("Mouse X") * rotationSpeed;
+                        yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
+                        if (yRot < -30f)
+                        {
+                            yRot = -30f;
+                        }
+                        transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                        
+                        if (transform.hasChanged){
+                            Debug.Log("jika bola terdiam muncula button");
+                            shootButton.gameObject.SetActive(true);
+                            transform.hasChanged = false;
+                        }
+                        
+                        guideline.gameObject.SetActive(true);
+                        guideline.SetPosition(0, transform.position);
+                        guideline.SetPosition(1, transform.position + transform.forward * 4f);
                     }
-                    transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-                    guideline.gameObject.SetActive(true);
-                    guideline.SetPosition(0, transform.position);
-                    guideline.SetPosition(1, transform.position + transform.forward * 4f);
-                }
+                // }
+                
                 if (Input.GetMouseButtonUp(0))
                     {
+                        // shootButton.gameObject.SetActive(false);
+                        Debug.Log("Seharusnya Button Hilang");
                         guideline.gameObject.SetActive(false);
+                        transform.hasChanged = false;
                     }
                 }
 
                 if (ball_id == 1){
                 transform.position = ball_1.position;
                 // Vector3 posisiAwal = ball_1.position;
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) )
-                {
-                    xRot += Input.GetAxis("Mouse X") * rotationSpeed;
-                    yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-                    if (yRot < -30f)
+                 if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
                     {
-                        yRot = -30f;
+                        xRot += Input.GetAxis("Mouse X") * rotationSpeed;
+                        yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
+                        if (yRot < -30f)
+                        {
+                            yRot = -30f;
+                        }
+                        transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                        
+                        if (transform.hasChanged){
+                            Debug.Log("jika bola terdiam muncula button");
+                            shootButton.gameObject.SetActive(true);
+                            transform.hasChanged = false;
+                        }
+                        
+                        guideline.gameObject.SetActive(true);
+                        guideline.SetPosition(0, transform.position);
+                        guideline.SetPosition(1, transform.position + transform.forward * 4f);
                     }
-                    transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-                    guideline.gameObject.SetActive(true);
-                    guideline.SetPosition(0, transform.position);
-                    guideline.SetPosition(1, transform.position + transform.forward * 4f);
-                }
+                // }
+                
                 if (Input.GetMouseButtonUp(0))
                     {
+                        // shootButton.gameObject.SetActive(false);
+                        Debug.Log("Seharusnya Button Hilang");
                         guideline.gameObject.SetActive(false);
+                        transform.hasChanged = false;
                     }
                 }
 
             if (ball_id == 2 ){
                 transform.position = ball_2.position;
+                // shootButton.gameObject.SetActive(true);
                 // Vector3 posisiAwal = ball_2.position;
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0) ))
-                {
-                    xRot += Input.GetAxis("Mouse X") * rotationSpeed;
-                    yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-                    if (yRot < -30f)
+                // if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0) && transform.hasChanged ))
+                // if (transform.hasChanged){
+                    if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
                     {
-                        yRot = -30f;
+                        xRot += Input.GetAxis("Mouse X") * rotationSpeed;
+                        yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
+                        if (yRot < -30f)
+                        {
+                            yRot = -30f;
+                        }
+                        transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                        
+                        if (transform.hasChanged){
+                            Debug.Log("jika bola terdiam muncula button");
+                            shootButton.gameObject.SetActive(true);
+                            transform.hasChanged = false;
+                        }
+                        
+                        guideline.gameObject.SetActive(true);
+                        guideline.SetPosition(0, transform.position);
+                        guideline.SetPosition(1, transform.position + transform.forward * 4f);
                     }
-                    transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-                    guideline.gameObject.SetActive(true);
-                    guideline.SetPosition(0, transform.position);
-                    guideline.SetPosition(1, transform.position + transform.forward * 4f);
-                }
+                // }
+                
                 if (Input.GetMouseButtonUp(0))
                     {
+                        // shootButton.gameObject.SetActive(false);
+                        Debug.Log("Seharusnya Button Hilang");
                         guideline.gameObject.SetActive(false);
+                        transform.hasChanged = false;
                     }
                 }
 
                 if (ball_id == 3){
                 transform.position = ball_3.position;
                 // Vector3 posisiAwal = ball_3.position;
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) )
-                {
-                    xRot += Input.GetAxis("Mouse X") * rotationSpeed;
-                    yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-                    if (yRot < -30f)
+                 if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
                     {
-                        yRot = -30f;
+                        xRot += Input.GetAxis("Mouse X") * rotationSpeed;
+                        yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
+                        if (yRot < -30f)
+                        {
+                            yRot = -30f;
+                        }
+                        transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                        
+                        if (transform.hasChanged){
+                            Debug.Log("jika bola terdiam muncula button");
+                            shootButton.gameObject.SetActive(true);
+                            transform.hasChanged = false;
+                        }
+                        
+                        guideline.gameObject.SetActive(true);
+                        guideline.SetPosition(0, transform.position);
+                        guideline.SetPosition(1, transform.position + transform.forward * 4f);
                     }
-                    transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-                    guideline.gameObject.SetActive(true);
-                    guideline.SetPosition(0, transform.position);
-                    guideline.SetPosition(1, transform.position + transform.forward * 4f);
-                }
+                // }
+                
                 if (Input.GetMouseButtonUp(0))
                     {
+                        // shootButton.gameObject.SetActive(false);
+                        Debug.Log("Seharusnya Button Hilang");
                         guideline.gameObject.SetActive(false);
+                        transform.hasChanged = false;
                     }
                 }
 
                 if (ball_id == 4){
                 transform.position = ball_4.position;
                 // Vector3 posisiAwal = ball_4.position;
-                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) )
-                {
-                    xRot += Input.GetAxis("Mouse X") * rotationSpeed;
-                    yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-                    if (yRot < -30f)
+                 if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
                     {
-                        yRot = -30f;
+                        xRot += Input.GetAxis("Mouse X") * rotationSpeed;
+                        yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
+                        if (yRot < -30f)
+                        {
+                            yRot = -30f;
+                        }
+                        transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                        
+                        if (transform.hasChanged){
+                            Debug.Log("jika bola terdiam muncula button");
+                            shootButton.gameObject.SetActive(true);
+                            transform.hasChanged = false;
+                        }
+                        
+                        guideline.gameObject.SetActive(true);
+                        guideline.SetPosition(0, transform.position);
+                        guideline.SetPosition(1, transform.position + transform.forward * 4f);
                     }
-                    transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
-                    guideline.gameObject.SetActive(true);
-                    guideline.SetPosition(0, transform.position);
-                    guideline.SetPosition(1, transform.position + transform.forward * 4f);
-                }
+                // }
+                
                 if (Input.GetMouseButtonUp(0))
                     {
+                        // shootButton.gameObject.SetActive(false);
+                        Debug.Log("Seharusnya Button Hilang");
                         guideline.gameObject.SetActive(false);
+                        transform.hasChanged = false;
                     }
                 }
         }
@@ -220,11 +288,12 @@ public class controllPoint : MonoBehaviour
     public void shoot()
         {
             // transform.position = ball_2.position;
-            if (transform.hasChanged){
-            nilaiGauge = powerUp.amtPower;
-            Debug.Log(nilaiGauge);
-            pressShoot ();
-            }
+            // if (transform.hasChanged){
+                nilaiGauge = powerUp.amtPower;
+                Debug.Log(nilaiGauge);
+                // transform.hasChanged = false;
+                pressShoot ();
+            // }
             // nilaiGauge = amtPower;
             // int.TryParse(powerGauge, out nilaiGauge);
             // GameObject thePlayer = GameObject.Find("ThePlayer");
@@ -265,6 +334,8 @@ public class controllPoint : MonoBehaviour
                 ball_4.velocity = transform.forward * shootPower / 5.0f;
                 guideline.gameObject.SetActive(false);
             }
+            shootButton.gameObject.SetActive(false);
+            Debug.Log("sampai presshoot dan seharusnya hilang");
             
         }
     }

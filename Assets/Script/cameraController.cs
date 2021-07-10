@@ -5,48 +5,17 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     [SerializeField]
-    public Transform target;
-    [SerializeField]
-    public Vector3 offsetPosition;
-
-    [SerializeField]
-    public Space offsetPositionSpace = Space.Self;
-
-    [SerializeField]
-    public bool lookAt = true;
-
-    public void LateUpdate()
-    {
-        Refresh();
+    public GameObject player;
+    public Vector3 offset;
+ 
+    // Use this for initialization
+    void Start () {
+        offset = transform.position - player.transform.position;
     }
-
-    public void Refresh()
-    {
-        if (target == null)
-        {
-            Debug.LogWarning("Missing target ref !", this);
-
-            return;
-        }
-
-        // compute position
-        if (offsetPositionSpace == Space.Self)
-        {
-            transform.position = target.TransformPoint(offsetPosition);
-        }
-        else
-        {
-            transform.position = target.position + offsetPosition;
-        }
-
-        // compute rotation
-        if (lookAt)
-        {
-            transform.LookAt(target);
-        }
-        else
-        {
-            transform.rotation = target.rotation;
-        }
+ 
+    void LateUpdate() {
+        transform.position = player.transform.position + offset;
+ 
+        transform.RotateAround(transform.parent.position, new Vector3(0,1,0),10*Time.deltaTime);
     }
 }
