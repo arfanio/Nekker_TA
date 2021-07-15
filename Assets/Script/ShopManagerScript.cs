@@ -26,9 +26,9 @@ public class ShopManagerScript : MonoBehaviour
 
         //Price
         shopItems[2, 1] = 10;
-        shopItems[2, 2] = 20;
-        shopItems[2, 3] = 30;
-        shopItems[2, 4] = 40;
+        shopItems[2, 2] = 40;
+        shopItems[2, 3] = 75;
+        shopItems[2, 4] = 100;
 
         //Status Pembelian
         shopItems[3, 1] = 0;
@@ -64,9 +64,14 @@ public class ShopManagerScript : MonoBehaviour
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
         Id_gaco = shopItems[1, ButtonRef.GetComponent<ButtonInfoPemasangan>().ItemIDPasang];
-        // shopItems[4, ButtonRef.GetComponent<ButtonInfoPasang>().ItemID]=2;
         PlayerPrefs.SetInt("id_gaco", Id_gaco);
         Debug.Log(Id_gaco);
+    }
+
+
+
+
+
 
     //     if (shopItems[4, ButtonRef.GetComponent<ButtonInfo>().ItemID] == 1);
     //     {
@@ -80,6 +85,6 @@ public class ShopManagerScript : MonoBehaviour
     //         PlayerPrefs.SetInt("id_gaco", Id_gaco);
     //         Debug.Log(Id_gaco);
     //     }
-    }
+    
 
 }
