@@ -17,7 +17,7 @@ public class follower : NetworkBehaviour
 
     public bool RotateAroundPlayer = true;
 
-    public float RotationSpeed = 0.2f;
+    public float RotationSpeed = 0.8f;
 
     void Start()
     {
