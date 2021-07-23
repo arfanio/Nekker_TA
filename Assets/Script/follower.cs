@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Mirror;
 
-public class follower : NetworkBehaviour
+
+public class follower : MonoBehaviour
 {
     public Transform targetObject;
 

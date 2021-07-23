@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Mirror;
 
-public class player : NetworkBehaviour
+
+public class player : MonoBehaviour
 {
     public static float nilaiGauge ;
     public static float xRot, yRot = 0f;
@@ -29,26 +29,7 @@ public class player : NetworkBehaviour
 // -----------------------------------------------------------------------------------------------------//
     void Update ()
         {
-            if (isLocalPlayer)
-            {
-                    if (giliran == false){
-                        StartCoroutine(your_timer());
-                        power.gameObject.SetActive(false);
-                    }
-
-                    if (giliran == true ){
-                        if(isServer){
-                            mainCamera.gameObject.SetActive(true);
-                            power.gameObject.SetActive(true);
-                            aimView();
-                        }
-                        if(isClientOnly){
-                            mainCamera.gameObject.SetActive(true);
-                            power.gameObject.SetActive(true);
-                            aimView();
-                        }
-                    }
-            }
+         
         }
 // -----------------------------------------------------------------------------------------------------//
         public void aimView()

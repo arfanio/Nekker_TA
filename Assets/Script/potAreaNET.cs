@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Mirror;
 
-public class potAreaNET : NetworkBehaviour
+
+public class potAreaNET : MonoBehaviour
 {
     public static int penguranganScorePoint = 0;
     public static int totalScorePoint = 0;

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Mirror;
 
-public class controllPointNET : NetworkBehaviour
+
+public class controllPointNET : MonoBehaviour
 {
     [SerializeField]
     private Button shootButton;
@@ -54,17 +54,7 @@ public class controllPointNET : NetworkBehaviour
 
     void Update ()
         {
-            if (isLocalPlayer)
-            {
-                if (isServer )
-                {
-                    aimView();
-                }
-                if (isClient)
-                {
-                    aimView();
-                }
-            }
+            
         }
 
     public void aimView()
@@ -196,7 +186,7 @@ public class controllPointNET : NetworkBehaviour
 
     void pressShoot()
     {
-        if (isLocalPlayer){
+        
             if (Input.GetMouseButtonUp(0))
             {
             // shootPower =textPowerAmt;
@@ -229,7 +219,7 @@ public class controllPointNET : NetworkBehaviour
             }
             
         }
-        }
+        
         
     }
 
