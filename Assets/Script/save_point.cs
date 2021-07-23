@@ -16,7 +16,7 @@ public class save_point : MonoBehaviour {
 	public static void simpan_skor(){
         point_lama = potArea.scorePoint;
         simpan_point = point_lama + update_point;
-        PlayerPrefs.SetInt("simpan_pointP1", simpan_point);
+        PlayerPrefs.SetInt("poin", simpan_point);
 		Debug.Log(PlayerPrefs.GetInt ("poin"));
 	}
 }
