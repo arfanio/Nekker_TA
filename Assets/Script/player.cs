@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using Photon.Pun;
 
-public class player : MonoBehaviour
+public class player : MonoBehaviourPun
 {
     public static float nilaiGauge ;
     public static float xRot, yRot = 0f;
@@ -23,13 +24,15 @@ public class player : MonoBehaviour
 // -----------------------------------------------------------------------------------------------------//
     void Start ()
         {
-        NetworkStart = GameObject.Find("NetworkManager");
-        NetworkStart.gameObject.SetActive(true);
+            if (!photonView.IsMine)
+            {               
+                GetComponent<player>().enabled = false;
+            }
         }
 // -----------------------------------------------------------------------------------------------------//
     void Update ()
         {
-         
+           aimView();
         }
 // -----------------------------------------------------------------------------------------------------//
         public void aimView()
