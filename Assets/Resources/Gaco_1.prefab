@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4717392164417456347}
   - component: {fileID: 1433890319128859023}
   - component: {fileID: 6319299519079157978}
+  - component: {fileID: 5300621361168696682}
   m_Layer: 0
   m_Name: Gaco_1
   m_TagString: Gaco
@@ -153,11 +154,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 1
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 6319299519079157978}
+  - {fileID: 5300621361168696682}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -177,6 +179,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &5300621361168696682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181766120125716545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &1490235162425026669
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +244,7 @@ MonoBehaviour:
   smoothFactor: 9
   lookAtTarget: 1
   RotateAroundPlayer: 1
-  RotationSpeed: 0.8
+  RotationSpeed: 0.4
 --- !u!1 &3023659772413004268
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5309038167960562151
 Transform:
   m_ObjectHideFlags: 0

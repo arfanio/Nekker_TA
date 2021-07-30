@@ -10,7 +10,7 @@ public class player : MonoBehaviourPun
 {
     public static float nilaiGauge ;
     public static float xRot, yRot = 0f;
-    public float rotationSpeed = 0.4f;
+    public float rotationSpeed = 0.8f;
     public float shootPower = 0.0f;
     public static bool giliran = true;
     public GameObject mainCamera;
@@ -22,17 +22,47 @@ public class player : MonoBehaviourPun
     public Rigidbody ball_1;
 
 // -----------------------------------------------------------------------------------------------------//
-    void Start ()
-        {
-            if (!photonView.IsMine)
-            {               
-                GetComponent<player>().enabled = false;
-            }
-        }
-// -----------------------------------------------------------------------------------------------------//
+    // void Start ()
+    //     {
+    //         if (photonView.IsMine)
+    //         {
+    //             aimView();
+    //             mainCamera.gameObject.SetActive(true);
+    //             // GetComponent<player>().enabled = true;
+    //         }
+    //     }
+
+    //     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    // {
+    //     if (stream.IsWriting)
+    //     {
+    //         //We own this player: send the others our data
+    //         stream.SendNext(transform.position);
+    //     }
+    //     else
+    //     {
+    //         //Network player, receive data
+    //         ball_1 = (Vector3)stream.ReceiveNext();
+    //         ball_1 = (Quaternion)stream.ReceiveNext();
+    //     }
+    // }
+//-----------------------------------------------------------------------------------------------------//
     void Update ()
         {
-           aimView();
+            if (photonView.IsMine)
+            {
+                aimView();
+                mainCamera.gameObject.SetActive(true);
+            }
+            // aimView();
+            // mainCamera.gameObject.SetActive(true);
+
+            if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+            {
+                power.gameObject.SetActive(false);
+                mainCamera.gameObject.SetActive(false);
+                return;
+            }
         }
 // -----------------------------------------------------------------------------------------------------//
         public void aimView()
@@ -67,13 +97,17 @@ public class player : MonoBehaviourPun
     }
     public void shoot()
         {
+            
             nilaiGauge = powerUp.amtPower;
             Debug.Log(nilaiGauge);
             pressShoot ();
+            
         }
 // -----------------------------------------------------------------------------------------------------//
     void pressShoot()
     {
+        // if (photonView.IsMine)
+        //     {
             if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0))
             {
                 transform.position = ball_1.position;
@@ -82,6 +116,8 @@ public class player : MonoBehaviourPun
                 giliran = false;
                 guideline.gameObject.SetActive(false);
             }
+            // }
+            // return;    
     }
 }
 // -----------------------------------------------------------------------------------------------------//
