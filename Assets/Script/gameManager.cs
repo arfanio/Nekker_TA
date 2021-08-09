@@ -7,10 +7,16 @@ using Photon.Pun;
 public class gameManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     GameObject obj;
+    // public GameObject target;
 
     public override void OnJoinedRoom()
     {
-         obj = PhotonNetwork.Instantiate("Gaco_1", new Vector3(-1, 1, -8), Quaternion.identity);
+        obj = PhotonNetwork.Instantiate("Gaco_1", new Vector3(-1, 1, -8), Quaternion.identity);
+        // if  (Launcher.Player == 2){
+        //     target.gameObject.SetActive(true);
+        // }
+        
+        
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

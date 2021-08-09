@@ -69,7 +69,7 @@ public class player : MonoBehaviourPun
         {
             transform.position = ball_1.position;
 
-            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) )
+            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) )
                 {
                     xRot += Input.GetAxis("Mouse X") * rotationSpeed;
                     yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
@@ -82,7 +82,7 @@ public class player : MonoBehaviourPun
                     guideline.SetPosition(0, transform.position);
                     guideline.SetPosition(1, transform.position + transform.forward * 4f);
                     }
-            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0))
+            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) )
                 {
                     guideline.gameObject.SetActive(false);
                 }
@@ -108,7 +108,7 @@ public class player : MonoBehaviourPun
     {
         // if (photonView.IsMine)
         //     {
-            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0))
+            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) )
             {
                 transform.position = ball_1.position;
                 shootPower = nilaiGauge;
