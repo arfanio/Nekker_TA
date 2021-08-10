@@ -15,37 +15,12 @@ public class player : MonoBehaviourPun
     public static bool giliran = true;
     public GameObject mainCamera;
     public GameObject power;
-    public GameObject target;
     GameObject NetworkStart;
     public LineRenderer guideline;
     Vector3 posisiAwal;
-    public Rigidbody ball_1;
+    public Rigidbody ball;
 
-// -----------------------------------------------------------------------------------------------------//
-    // void Start ()
-    //     {
-    //         if (photonView.IsMine)
-    //         {
-    //             aimView();
-    //             mainCamera.gameObject.SetActive(true);
-    //             // GetComponent<player>().enabled = true;
-    //         }
-    //     }
 
-    //     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    // {
-    //     if (stream.IsWriting)
-    //     {
-    //         //We own this player: send the others our data
-    //         stream.SendNext(transform.position);
-    //     }
-    //     else
-    //     {
-    //         //Network player, receive data
-    //         ball_1 = (Vector3)stream.ReceiveNext();
-    //         ball_1 = (Quaternion)stream.ReceiveNext();
-    //     }
-    // }
 //-----------------------------------------------------------------------------------------------------//
     void Update ()
         {
@@ -67,7 +42,7 @@ public class player : MonoBehaviourPun
 // -----------------------------------------------------------------------------------------------------//
         public void aimView()
         {
-            transform.position = ball_1.position;
+            transform.position = ball.position;
 
             if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) )
                 {
@@ -110,9 +85,9 @@ public class player : MonoBehaviourPun
         //     {
             if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0))
             {
-                transform.position = ball_1.position;
+                transform.position = ball.position;
                 shootPower = nilaiGauge;
-                ball_1.velocity = transform.forward * shootPower / 5.0f;
+                ball.velocity = transform.forward * shootPower / 5.0f;
                 giliran = false;
                 guideline.gameObject.SetActive(false);
             }

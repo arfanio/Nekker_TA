@@ -8,9 +8,39 @@ public class gameManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     GameObject obj;
 
+    public static int update_pointGameManager = 0;
+
+    void Start ()
+    {
+        update_pointGameManager = PlayerPrefs.GetInt ("id_gaco");
+    }
+
     public override void OnJoinedRoom()
     {
-         obj = PhotonNetwork.Instantiate("Gaco_1", new Vector3(-1, 1, -8), Quaternion.identity);
+         if (update_pointGameManager == 0){
+            Debug.Log(update_pointGameManager);
+            obj = PhotonNetwork.Instantiate("Gaco_1", new Vector3(-1, 1, -8), Quaternion.identity);
+        }
+
+        if (update_pointGameManager == 1){
+            Debug.Log(update_pointGameManager);
+            obj = PhotonNetwork.Instantiate("Gaco_1", new Vector3(-1, 1, -8), Quaternion.identity);
+        }
+
+        if (update_pointGameManager == 2){
+            Debug.Log(update_pointGameManager);
+            obj = PhotonNetwork.Instantiate("Gaco_2", new Vector3(-1, 1, -8), Quaternion.identity);
+        }
+         
+        if (update_pointGameManager == 3){
+            Debug.Log(update_pointGameManager);
+            obj = PhotonNetwork.Instantiate("Gaco_3", new Vector3(-1, 1, -8), Quaternion.identity);
+        }
+
+        if (update_pointGameManager == 4){
+            Debug.Log(update_pointGameManager);
+            obj = PhotonNetwork.Instantiate("Gaco_4", new Vector3(-1, 1, -8), Quaternion.identity);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
