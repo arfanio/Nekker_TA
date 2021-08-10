@@ -6,7 +6,6 @@ using Photon.Realtime;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +19,9 @@ public class Launcher : MonoBehaviourPunCallbacks
         RoomOptions roomOptions = new RoomOptions() { IsVisible = true, MaxPlayers = 2 };
         PhotonNetwork.JoinOrCreateRoom("room", roomOptions, TypedLobby.Default);
         Debug.Log("Connected to Master");
-        
     }
-    
+
+
     void OnDisconnectedFromPhoton()
     {
         Debug.Log("Terputus dengan Photon");

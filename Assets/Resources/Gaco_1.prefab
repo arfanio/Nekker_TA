@@ -136,8 +136,9 @@ MonoBehaviour:
   shootPower: 0
   mainCamera: {fileID: 8018370860128209860}
   power: {fileID: 3023659772413004268}
+  target: {fileID: 0}
   guideline: {fileID: 5309038167960562150}
-  ball: {fileID: 7379651866199589319}
+  ball_1: {fileID: 7379651866199589319}
 --- !u!114 &1433890319128859023
 MonoBehaviour:
   m_ObjectHideFlags: 0
