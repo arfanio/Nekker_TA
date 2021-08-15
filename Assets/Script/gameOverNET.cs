@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class gameOverNET : MonoBehaviour
 
 {
 
-GameObject Network;
+GameObject Panel;
 
 
     public void backmenuClicked()
     {
         Application.LoadLevel(1);
-        Network = GameObject.Find("NetworkManager");
-        Network.gameObject.SetActive(false);
+        PhotonNetwork.Disconnect();
+        Debug.Log("Disconnect From Server");
+        Panel = GameObject.Find("PanelGameover");
+        Panel.gameObject.SetActive(false);
+        Debug.Log("Hilanggg");
     }
 }

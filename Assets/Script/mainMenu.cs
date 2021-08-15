@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class mainMenu : MonoBehaviour
 {
+    GameObject Panel;
     public GameObject bg;
     public GameObject main;
     public GameObject about;
@@ -59,6 +60,9 @@ public class mainMenu : MonoBehaviour
     public void multiplayerClicked()
     {
         Application.LoadLevel("LemparanAwal");
+        Panel = GameObject.Find("PanelGameover");
+        Panel.gameObject.SetActive(false);
+        Debug.Log("Hilanggg");
     }
 
     public void soloClicked()
