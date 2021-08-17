@@ -40,7 +40,7 @@ public class follower : MonoBehaviour
         //         {
                    if(RotateAroundPlayer)
                     {
-                        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) ){
+                        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) ){
                             Quaternion camTurnAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * RotationSpeed, Vector3.up);
 
                             cameraOffset = camTurnAngle * cameraOffset;
