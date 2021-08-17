@@ -60,9 +60,7 @@ public class mainMenu : MonoBehaviour
     public void multiplayerClicked()
     {
         Application.LoadLevel("LemparanAwal");
-        Panel = GameObject.Find("PanelGameover");
-        Panel.gameObject.SetActive(false);
-        Debug.Log("Hilanggg");
+        
     }
 
     public void soloClicked()

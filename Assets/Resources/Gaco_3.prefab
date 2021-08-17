@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 2852670336870205932}
   m_Layer: 0
   m_Name: Gaco_3
-  m_TagString: Untagged
+  m_TagString: Gaco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

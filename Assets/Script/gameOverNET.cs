@@ -19,6 +19,7 @@ GameObject Panel;
         Debug.Log("Disconnect From Server");
         Panel = GameObject.Find("PanelGameover");
         Panel.gameObject.SetActive(false);
+        
         Debug.Log("Hilanggg");
     }
 }

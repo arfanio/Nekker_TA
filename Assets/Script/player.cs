@@ -13,6 +13,7 @@ public class player : MonoBehaviourPun
     public float rotationSpeed = 0.8f;
     public float shootPower = 0.0f;
     public static bool giliran = true;
+    public static bool Rot = true;
     public GameObject mainCamera;
     public GameObject power;
     GameObject NetworkStart;
@@ -21,6 +22,21 @@ public class player : MonoBehaviourPun
     public Rigidbody ball;
 
 
+    // void Start(){
+    //     if (photonView.IsMine)
+    //         {
+    //             Reset();
+    //             mainCamera.gameObject.SetActive(true);
+    //         }
+    //         // aimView();
+    //         // mainCamera.gameObject.SetActive(true);
+
+    //         if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+    //         {
+    //             Reset();
+    //             return;
+    //         }
+    // }
 //-----------------------------------------------------------------------------------------------------//
     void Update ()
         {
@@ -42,10 +58,38 @@ public class player : MonoBehaviourPun
 // -----------------------------------------------------------------------------------------------------//
         public void aimView()
         {
+            Debug.Log("reset posisinya yaitu " + potAreaNET.ResetPosisi);
             transform.position = ball.position;
-
-            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) )
+            if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) )
                 {
+                    if (potAreaNET.ResetPosisi == 1 || potAreaNET.ResetPosisi == 0){
+                    transform.position = ball.position;
+                    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                        if (Rot){
+                            xRot = 0f;
+                            yRot = 0f;
+                            Rot = false;
+                        }
+                        if (!Rot){
+                            xRot += Input.GetAxis("Mouse X") * rotationSpeed;
+                            yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
+                                if (yRot < -30f)
+                                {
+                                    yRot = -30f;
+                                }
+                            transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                            Debug.Log(transform.rotation);
+                            guideline.gameObject.SetActive(true);
+                            guideline.SetPosition(0, transform.position);
+                            guideline.SetPosition(1, transform.position + transform.forward * 4f);
+                        }
+                    }
+
+                    
+
+                    if (potAreaNET.ResetPosisi == 2 )
+                    {
+                    transform.position = ball.position;
                     xRot += Input.GetAxis("Mouse X") * rotationSpeed;
                     yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
                         if (yRot < -30f)
@@ -53,15 +97,19 @@ public class player : MonoBehaviourPun
                             yRot = -30f;
                         }
                     transform.rotation = Quaternion.Euler(yRot, xRot, 0f);
+                    Debug.Log(transform.rotation);
                     guideline.gameObject.SetActive(true);
                     guideline.SetPosition(0, transform.position);
                     guideline.SetPosition(1, transform.position + transform.forward * 4f);
-                    }
+                }
+        
             if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0))
                 {
                     guideline.gameObject.SetActive(false);
                 }
+            }
         }
+
 // -----------------------------------------------------------------------------------------------------//
     IEnumerator your_timer() 
     {
@@ -90,6 +138,7 @@ public class player : MonoBehaviourPun
                 ball.velocity = transform.forward * shootPower / 5.0f;
                 giliran = false;
                 guideline.gameObject.SetActive(false);
+                potAreaNET.ResetPosisi = 2;
             }
             // }
             // return;    

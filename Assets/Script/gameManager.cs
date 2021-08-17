@@ -13,13 +13,16 @@ public class gameManager : MonoBehaviourPunCallbacks, IPunObservable
     void Start ()
     {
         update_pointGameManager = PlayerPrefs.GetInt ("id_gaco");
+        Debug.Log(update_pointGameManager);        
+
     }
 
     public override void OnJoinedRoom()
     {
          if (update_pointGameManager == 0){
             Debug.Log(update_pointGameManager);
-            obj = PhotonNetwork.Instantiate("Gaco_1", spawnManager.instance.spawnPoints[update_pointGameManager].position, Quaternion.identity);
+            obj = PhotonNetwork.Instantiate("Gaco_1", new Vector3(-1, 1, -8), Quaternion.identity);
+            // obj = PhotonNetwork.Instantiate("Gaco_1", spawnManager.instance.spawnPoints[update_pointGameManager].position, Quaternion.identity);
         }
 
         if (update_pointGameManager == 1){
