@@ -42,8 +42,17 @@ public class player : MonoBehaviourPun
         {
             if (photonView.IsMine)
             {
-                aimView();
-                mainCamera.gameObject.SetActive(true);
+                if (giliran == false){
+                        StartCoroutine(your_timer());
+                        power.gameObject.SetActive(false);
+                        mainCamera.gameObject.SetActive(false);
+                    }
+
+                if (giliran == true ){
+                    aimView();
+                    mainCamera.gameObject.SetActive(true);
+                    power.gameObject.SetActive(true);
+                }
             }
             // aimView();
             // mainCamera.gameObject.SetActive(true);
@@ -115,7 +124,7 @@ public class player : MonoBehaviourPun
     {
         giliran = false;
         // Debug.Log("waktu p1" + Time.time);
-        yield return new WaitForSeconds(8.0f);
+        yield return new WaitForSeconds(7.0f);
         giliran = true;
     }
     public void shoot()
