@@ -69,7 +69,7 @@ public class player : MonoBehaviourPun
         {
             Debug.Log("reset posisinya yaitu " + potAreaNET.ResetPosisi);
             transform.position = ball.position;
-            if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)  )
+            if ( (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) || Input.GetMouseButton(0) )
                 {
                     if (potAreaNET.ResetPosisi == 1 || potAreaNET.ResetPosisi == 0){
                     transform.position = ball.position;
@@ -112,7 +112,7 @@ public class player : MonoBehaviourPun
                     guideline.SetPosition(1, transform.position + transform.forward * 4f);
                 }
         
-            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
+            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0))
                 {
                     guideline.gameObject.SetActive(false);
                 }
@@ -140,7 +140,7 @@ public class player : MonoBehaviourPun
     {
         // if (photonView.IsMine)
         //     {
-            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) )
+            if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0))
             {
                 transform.position = ball.position;
                 shootPower = nilaiGauge;

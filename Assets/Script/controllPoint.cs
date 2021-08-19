@@ -18,7 +18,7 @@ public class controllPoint : MonoBehaviour
     public Rigidbody ball_4;
     private Transform startPOS;
     public static Vector3 posisiAwal;
-    public float rotationSpeed = 0.2f;
+    float rotationSpeed = 0.8f;
     public float shootPower = 0.0f;
     public LineRenderer guideline;
         void Start ()
@@ -57,7 +57,7 @@ public class controllPoint : MonoBehaviour
             if (ball_id == 0){
                 transform.position = ball_1.position;
                 // Vector3 posisiAwal = ball_1.position;
-                 if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0)))
+                 if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved ))
                     {
                         xRot += Input.GetAxis("Mouse X") * rotationSpeed;
                         yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
@@ -79,7 +79,7 @@ public class controllPoint : MonoBehaviour
                     }
                 // }
                 
-                if (Input.GetMouseButtonUp(0))
+                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended ))
                     {
                         // shootButton.gameObject.SetActive(false);
                         Debug.Log("Seharusnya Button Hilang");
@@ -91,7 +91,7 @@ public class controllPoint : MonoBehaviour
                 if (ball_id == 1){
                 transform.position = ball_1.position;
                 // Vector3 posisiAwal = ball_1.position;
-                 if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0)))
+                 if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved ))
                     {
                         xRot += Input.GetAxis("Mouse X") * rotationSpeed;
                         yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
@@ -113,7 +113,7 @@ public class controllPoint : MonoBehaviour
                     }
                 // }
                 
-                if (Input.GetMouseButtonUp(0))
+                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended ))
                     {
                         // shootButton.gameObject.SetActive(false);
                         Debug.Log("Seharusnya Button Hilang");
@@ -128,7 +128,7 @@ public class controllPoint : MonoBehaviour
                 // Vector3 posisiAwal = ball_2.position;
                 // if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0) && transform.hasChanged ))
                 // if (transform.hasChanged){
-                    if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetMouseButton(0) ))
+                    if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
                     {
                         xRot += Input.GetAxis("Mouse X") * rotationSpeed;
                         yRot += Input.GetAxis("Mouse Y") * rotationSpeed;
@@ -150,7 +150,7 @@ public class controllPoint : MonoBehaviour
                     }
                 // }
                 
-                if (Input.GetMouseButtonUp(0))
+                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended ))
                     {
                         // shootButton.gameObject.SetActive(false);
                         Debug.Log("Seharusnya Button Hilang");
@@ -184,7 +184,7 @@ public class controllPoint : MonoBehaviour
                     }
                 // }
                 
-                if (Input.GetMouseButtonUp(0))
+                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended ))
                     {
                         // shootButton.gameObject.SetActive(false);
                         Debug.Log("Seharusnya Button Hilang");
@@ -218,7 +218,7 @@ public class controllPoint : MonoBehaviour
                     }
                 // }
                 
-                if (Input.GetMouseButtonUp(0))
+                if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended ))
                     {
                         // shootButton.gameObject.SetActive(false);
                         Debug.Log("Seharusnya Button Hilang");
@@ -237,7 +237,7 @@ public class controllPoint : MonoBehaviour
 
     void pressShoot()
     {
-        if (Input.GetMouseButtonUp(0))
+        if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended ))
         {
             shootPower = nilaiGauge;
             if (ball_id == 0)

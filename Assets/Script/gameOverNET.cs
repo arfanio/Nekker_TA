@@ -18,7 +18,7 @@ GameObject Panel;
         PhotonNetwork.Disconnect();
         Debug.Log("Disconnect From Server");
         Panel = GameObject.Find("PanelGameover");
-        Panel.gameObject.SetActive(false);
+        //Panel.gameObject.SetActive(false);
         
         Debug.Log("Hilanggg");
     }
